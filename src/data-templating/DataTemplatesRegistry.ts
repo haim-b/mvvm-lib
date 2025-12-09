@@ -1,6 +1,6 @@
 import { Newable } from 'inversify';
 import * as React from 'react';
-import { PropsWithViewModel } from '../Infra';
+import { PropsWithViewModel } from '../infra';
 
 export interface DataTemplatesRegistry {
     registerTemplate(viewModelType: Newable<unknown>, componentType: React.ComponentType<PropsWithViewModel>): void;

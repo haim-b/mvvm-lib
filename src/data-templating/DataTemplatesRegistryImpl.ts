@@ -1,7 +1,7 @@
 import { injectable, Newable } from 'inversify';
 import React from 'react';
 import { DataTemplatesRegistry } from './DataTemplatesRegistry';
-import { PropsWithViewModel } from '../Infra';
+import { PropsWithViewModel } from '../infra';
 
 @injectable()
 export class DataTemplatesRegistryImpl implements DataTemplatesRegistry {
