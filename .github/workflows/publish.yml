@@ -1,0 +1,48 @@
+name: Publish to NPM
+
+on:
+  release:
+    types: [created]
+  push:
+    branches:
+      - main
+    paths:
+      - 'package.json'
+      - '.github/workflows/publish.yml'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      packages: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+      
+      - name: Install dependencies
+        run: yarn install
+      
+      # - name: Run linter
+      #   run: yarn lint
+      
+      #- name: Run tests
+      #  run: yarn test
+      
+      - name: Build package
+        run: yarn build
+      
+      - name: Publish to NPM
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

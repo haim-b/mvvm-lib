@@ -1,0 +1,66 @@
+{
+  "name": "mvvm-lib",
+  "version": "1.0.0",
+  "description": "MVVM library for developing MVVM-based apps with React, MobX and Inversify.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haim-b/mvvm-lib.git"
+  },
+  "keywords": [
+    "mvvm",
+    "mobx",
+    "state-management",
+    "reactive"
+  ],
+  "author": "haim-b",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "inversify": "^7.10.4",
+    "jest": "^29.5.0",
+    "logger-interface": "^0.1.1",
+    "mobx": "^6.0.0",
+    "mvvm-mobx": "^1.0.3",
+    "prettier": "^3.0.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "inversify": "^7.10.4",
+    "logger-interface": "^0.1.1",
+    "mobx": "^6.0.0",
+    "mvvm-mobx": "^1.0.3"
+  },
+  "peerDependenciesMeta": {
+    "mobx": {
+      "optional": false
+    },
+    "mvvm-mobx": {
+      "optional": false
+    },
+    "inversify": {
+      "optional": false
+    }
+  }
+}
