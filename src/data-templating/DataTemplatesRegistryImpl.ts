@@ -1,4 +1,4 @@
-import { injectable, Newable } from 'inversify';
+import { injectable, ServiceIdentifier } from 'inversify';
 import React from 'react';
 import { DataTemplatesRegistry } from './DataTemplatesRegistry';
 import { PropsWithViewModel } from '../infra';
@@ -6,18 +6,18 @@ import { PropsWithViewModel } from '../infra';
 @injectable()
 export class DataTemplatesRegistryImpl implements DataTemplatesRegistry {
     private readonly registry: Map<
-        Newable<unknown>, React.ComponentType<PropsWithViewModel>
+        ServiceIdentifier<unknown>, React.ComponentType<PropsWithViewModel>
     > = new Map();
 
     registerTemplate(
-        viewModelType: Newable<unknown>,
+        viewModelType: ServiceIdentifier<unknown>,
         componentType: React.ComponentType<PropsWithViewModel>,
     ) {
         this.registry.set(viewModelType, componentType);
     }
 
     getComponentForViewModel<T = unknown>(
-        viewModelType: Newable<T>,
+        viewModelType: ServiceIdentifier<T>,
     ): React.ComponentType<PropsWithViewModel> | undefined {
         
         // We climb up the class hierarchy until we find a registered view:

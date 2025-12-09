@@ -1,6 +1,6 @@
 {
   "name": "mvvm-lib",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MVVM library for developing MVVM-based apps with React, MobX and Inversify.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
