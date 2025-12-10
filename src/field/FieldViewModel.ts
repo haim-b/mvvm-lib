@@ -3,8 +3,8 @@ import { action, computed, makeObservable, observable } from 'mobx';
 type ValidateFn<T> = (value: T) => string | null;
 
 export class FieldViewModel<T> {
-    @observable value: T | undefined;
-    @observable isTouched: boolean;
+    @observable accessor value: T | undefined;
+    @observable accessor isTouched: boolean;
 
     constructor(
         readonly name: string,
