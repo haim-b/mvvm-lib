@@ -1,7 +1,7 @@
-import { RelayCommand, InteractionResponse } from 'mvvm-mobx';
+import { Command, InteractionResponse } from 'mvvm-mobx';
 
 export class ActionArray {
-readonly actions: Action[];
+    readonly actions: Action[];
 
     constructor(actions: Action[], readonly mainActionId?: string) {
         actions = actions ?? [];
@@ -11,7 +11,7 @@ readonly actions: Action[];
 }
 
 export class Action extends InteractionResponse {
-    constructor(id: string, title: string, readonly command: RelayCommand<unknown>, icon?: string, public sortDescription?: string) {
+    constructor(id: string, title: string, readonly command: Command<unknown>, icon?: string, public sortDescription?: string) {
         super(id, title, command, icon);
     }
 }
