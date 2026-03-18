@@ -14,7 +14,8 @@
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
         "moduleResolution": "node",
-        "jsx": "react"
+        "jsx": "react",
+        "experimentalDecorators": true
     },
     "include": [
         "src"
