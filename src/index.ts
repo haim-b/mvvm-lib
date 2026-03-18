@@ -4,3 +4,4 @@ export * from './data-templating';
 export * from './field';
 export * from './infra';
 export * from './routes-manager';
+export * from './plugability';
