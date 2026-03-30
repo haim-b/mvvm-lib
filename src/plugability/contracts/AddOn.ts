@@ -1,9 +1,8 @@
-import { Container } from "inversify";
 import { Logger } from "logger-interface";
 
 export interface AddOn {
     get name(): string;
-    initialize(iocContainer: Container, configuration: object, logger: Logger): Promise<void>;
+    initialize<TServices extends { logger: Logger }>(configuration: object, services: TServices): Promise<void>;
 }
 
 export const AddOn = Symbol.for('AddOn');
