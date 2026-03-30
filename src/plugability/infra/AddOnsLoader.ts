@@ -3,12 +3,12 @@ import { AddOn } from '../contracts/AddOn';
 import { Logger } from 'logger-interface';
 
 @injectable()
-export class AddOnsLoader {
+export class AddOnsLoader<TInitServices extends { logger: Logger }> {
     constructor(
-        @multiInject(AddOn) @optional() private readonly addOns: AddOn[],
+        @multiInject(AddOn) @optional() private readonly addOns: AddOn<TInitServices>[],
         @inject(Logger) private readonly logger: Logger) { }
 
-    async loadAddOns<TServices extends { logger: Logger }>(addOnsConfig: { [addOnName: string]: { enabled: boolean } }, services: TServices): Promise<void> {
+    async loadAddOns<TInitServices extends { logger: Logger }>(addOnsConfig: { [addOnName: string]: { enabled: boolean } }, services: TInitServices): Promise<void> {
         if (!addOnsConfig) {
             return;
         }
