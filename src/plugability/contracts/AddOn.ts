@@ -1,8 +1,8 @@
 import { Logger } from "logger-interface";
 
-export interface AddOn {
+export interface AddOn<TInitServices extends { logger: Logger }> {
     get name(): string;
-    initialize<TServices extends { logger: Logger }>(configuration: object, services: TServices): Promise<void>;
+    initialize<TInitServices>(configuration: object, services: TInitServices): Promise<void>;
 }
 
 export const AddOn = Symbol.for('AddOn');
