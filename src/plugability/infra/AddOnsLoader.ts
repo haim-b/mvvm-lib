@@ -1,4 +1,4 @@
-import { Container, inject, injectable, multiInject, optional } from 'inversify';
+import { inject, injectable, multiInject, optional } from 'inversify';
 import { AddOn } from '../contracts/AddOn';
 import { Logger } from 'logger-interface';
 
@@ -8,7 +8,7 @@ export class AddOnsLoader {
         @multiInject(AddOn) @optional() private readonly addOns: AddOn[],
         @inject(Logger) private readonly logger: Logger) { }
 
-    async loadAddOns(container: Container, addOnsConfig: { [addOnName: string]: { enabled: boolean } }): Promise<void> {
+    async loadAddOns<TServices extends { logger: Logger }>(addOnsConfig: { [addOnName: string]: { enabled: boolean } }, services: TServices): Promise<void> {
         if (!addOnsConfig) {
             return;
         }
@@ -22,7 +22,7 @@ export class AddOnsLoader {
             }
 
             try {
-                await addOn.initialize(container, addOnConfig, this.logger);
+                await addOn.initialize(addOnConfig, services);
             } catch (error) {
                 this.logger.error(`Failed to initialize the add-on '${addOn.name}'.\nError: ${error}`);
             }
