@@ -8,7 +8,7 @@ export class AddOnsLoader<TInitServices extends { logger: Logger }> {
         @multiInject(AddOn) @optional() private readonly addOns: AddOn<TInitServices>[],
         @inject(Logger) private readonly logger: Logger) { }
 
-    async loadAddOns<TInitServices extends { logger: Logger }>(addOnsConfig: { [addOnName: string]: { enabled: boolean } }, services: TInitServices): Promise<void> {
+    async loadAddOns(addOnsConfig: { [addOnName: string]: { enabled: boolean } }, services: TInitServices): Promise<void> {
         if (!addOnsConfig) {
             return;
         }
